@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear un Evento</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/gestion.css">
 </head>
 <body>
     <header>
@@ -28,5 +31,83 @@
             </a>
         </div>
     </header>
+    <main>
+        <form id="eventForm">
+            <label for="titulo">Título del Evento:</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria" required>
+                <option value="Musica en vivo">Música en vivo</option>
+                <option value="DJ sets">DJ sets & clubs</option>
+                <option value="Pop-ups">Pop-ups</option>
+                <option value="Arte">Arte y performance</option>
+            </select>
+
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <label for="ubicacion">Ubicación (Madrid):</label>
+            <input type="text" id="ubicacion" name="ubicacion" required>
+
+            <label for="precio">Precio (€):</label>
+            <input type="number" id="precio" name="precio" step="0.01" min="0" placeholder="Ej. 12.50 o 0 para gratuito" required>
+
+            <label for="descripcion">Breve Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="3" placeholder="Detalles clave del evento..." required></textarea>
+
+            <!-- Contenedor para las hasta 3 fotos (URLs) -->
+            <fieldset style="border: 1px solid #333; padding: 10px; border-radius: 6px; margin-bottom: 15px;">
+                <legend style="color: #ccff00; font-size: 0.9rem; font-weight: bold;">Fotos del Evento (Hasta 3 URLs)</legend>
+                
+                <label for="foto1">Foto principal (Obligatoria):</label>
+                <input type="url" id="foto1" name="foto1" placeholder="https://ejemplo.com/foto1.jpg" required>
+
+                <label for="foto2">Foto 2 (Opcional):</label>
+                <input type="url" id="foto2" name="foto2" placeholder="https://ejemplo.com/foto2.jpg">
+
+                <label for="foto3">Foto 3 (Opcional):</label>
+                <input type="url" id="foto3" name="foto3" placeholder="https://ejemplo.com/foto3.jpg">
+            </fieldset>
+
+            <button type="submit" id="btnSubmit">Guardar Evento</button>
+        </form>
+
+        <div id="formMessage" ></div>   
+        <section id="tabla-container">
+            <h2>Agenda de Eventos Registrados</h2>
+            <table id="eventTable">
+                <caption>Listado completo de eventos culturales de MadNights News almacenados en la base de datos</caption>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Foto Principal</th>
+                        <th>Título & Descripción</th>
+                        <th>Categoría</th>
+                        <th>Fecha / Ubicación</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Los datos se inyectarán dinámicamente mediante JavaScript -->
+                </tbody>
+            </table>
+        </section>     
+
+    </main>
+    <footer>
+        <h1 class="giant-footer-text">SEE YOU OUT THERE.</h1>
+        
+        <div class="footer-bottom-bar">
+            <p class="copyright">&copy; 2026 MadNightsNews.</p>
+            <p class="disclaimer">A concept guide with sample events. Not a verified event calendar.</p>
+            <div id="footerLinks">
+                <a href="#">Privacy</a>
+                <a href="#">Cookies</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

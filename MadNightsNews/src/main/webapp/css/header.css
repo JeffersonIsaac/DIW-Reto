@@ -1,0 +1,62 @@
+
+header {
+    background-color: #0f0f0f;
+    border-bottom: 1px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 40px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#logo img {
+    height: 38px;
+    width: auto;
+    display: block;
+}
+
+.menu-principal ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+}
+
+.menu-principal a {
+    text-decoration: none;
+    color: #b3b3b3;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.menu-principal a:hover,
+.menu-principal a:focus-visible {
+    color: #ffffff;
+}
+
+.menu-principal a.active {
+    color: #ccff00;
+}
+
+#btnCreateEventContainer button {
+    background-color: #ccff00;
+    color: #0b0b0b;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#btnCreateEventContainer button:hover {
+    background-color: #b3e600;
+}
+
+#btnCreateEventContainer button:active {
+    transform: scale(0.98);
+}

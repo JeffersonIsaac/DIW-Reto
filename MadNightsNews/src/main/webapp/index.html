@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MadNightsNews</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/inicio.css">
 </head>
 <body>
     <header>
         
         <div id="logo">
             <a href="index.html">
-                <img src="images/Logo-MNN.jpg" alt="Logotipo de MadNights News - Madrid Independent Events">
+                <img src="images/logo-MNN.jpg" alt="Logotipo de MadNights News - Madrid Independent Events">
             </a>
         </div>
         <nav class="menu-principal">
@@ -28,8 +31,51 @@
             </a>
         </div>
     </header>
-    <section >
+    <main>
+        <section id = "DisplayEventsWeek">
+            
+            <div id="titleWeek">
+                <div id="textoSobreTitulo"><p>Your city, your way</p><p id="fechaSemanaActual"></p></div>
+                <div><h1>WEEKLY CRASHERS</h1><h6>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h6></div>
+                <div id="textoBajoTitulo"><p>Selected for the curious, not the algorithm</p></div>
+            </div>
+            <div id="sectionEventsList">
+                <ul id="eventListContainer">
+                    
+                </ul>
+            </div>
+        </section>
+        <section id="DisplayEventsPerCategory">
 
-    </section>
+        </section>
+        <section id="Newsletter">
+            <div id="newsletterContainer">
+                <div id="newsletterText">
+                    <h1>YOUR WEEKEND, SORTED</h1>
+                    <p>Get the latest events of Madrid and updates delivered straight to your inbox.</p>
+                </div>
+                <div id="newsletterForm">
+                    <form action="" method="post">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>    
+    <footer>
+        <h1 class="giant-footer-text">SEE YOU OUT THERE.</h1>
+        
+        <div class="footer-bottom-bar">
+            <p class="copyright">&copy; 2026 MadNightsNews.</p>
+            <p class="disclaimer">A concept guide with sample events. Not a verified event calendar.</p>
+            <div id="footerLinks">
+                <a href="#">Privacy</a>
+                <a href="#">Cookies</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+    
 </body>
 </html>

@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b0b0b;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+}
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Estilo del Formulario */
+#eventForm {
+    background-color: #121212;
+    border: 1px solid #1f1f1f;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+#eventForm label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #cccccc;
+    margin-bottom: 8px;
+    margin-top: 16px;
+}
+
+#eventForm label:first-of-type {
+    margin-top: 0;
+}
+
+#eventForm input[type="text"],
+#eventForm input[type="date"],
+#eventForm input[type="number"],
+#eventForm input[type="url"],
+#eventForm select,
+#eventForm textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: #0b0b0b;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+#eventForm input:focus,
+#eventForm select:focus,
+#eventForm textarea:focus {
+    outline: none;
+    border-color: #ccff00; 
+}
+
+#eventForm textarea {
+    resize: vertical;
+}
+
+/* Las fotos */
+#eventForm fieldset {
+    border: 1px solid #2a2a2a !important;
+    background-color: #0f0f0f;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 24px;
+}
+
+#eventForm legend {
+    color: #ccff00;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0 8px;
+}
+
+/* Botón de envío del formulario */
+#btnSubmit {
+    background-color: #ccff00;
+    color: #0b0b0b;
+    border: none;
+    padding: 14px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#btnSubmit:hover {
+    background-color: #b3e600;
+}
+
+#btnSubmit:active {
+    transform: scale(0.99);
+}
+
+/* Mensajes éxito o error */
+#formMessage {
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* La tabla */
+#tabla-container {
+    background-color: #121212;
+    border: 1px solid #1f1f1f;
+    border-radius: 8px;
+    padding: 30px;
+    overflow-x: auto; 
+}
+
+#tabla-container h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+#eventTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+    min-width: 700px; 
+}
+
+#eventTable caption {
+    caption-side: top;
+    font-size: 0.8rem;
+    color: #888888;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+#eventTable th,
+#eventTable td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #1f1f1f;
+}
+
+#eventTable th {
+    background-color: #181818;
+    color: #ccff00;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+#eventTable tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+#eventTable tbody tr:hover {
+    background-color: #161616;
+}
+
+#eventTable td {
+    color: #dddddd;
+    vertical-align: middle;
+}
