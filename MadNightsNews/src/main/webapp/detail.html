@@ -3,59 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evento</title>
+    <title>Detalles del Evento - MadNightsNews</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-    <header>
-        
-        <div id="logo">
-            <a href="index.html">
-                <img src="images/Logo-MNN.jpg" alt="Logotipo de MadNights News - Madrid Independent Events">
-            </a>
-        </div>
-        <nav class="menu-principal">
-            <ul>
-                <li><a href="catalog.html#esta-semana" class="active">Esta semana</a></li>
-                <li><a href="catalog.html#musica-en-vivo">Música en vivo</a></li>
-                <li><a href="catalog.html#dj-sets">DJ sets y clubs</a></li>
-                <li><a href="catalog.html#pop-ups">Pop-ups</a></li>
-                <li><a href="catalog.html#arte">Arte</a></li>
-            </ul>
-        </nav>
-        <div id="btnCreateEventContainer">
-            <a href="gestion.html">
-                <button type="button">Crear evento</button>
-            </a>
-        </div>
-    </header>
-    <main>
-        <div>
-            <p>Detalles del Evento</p>
-            <h1 class="tituloEvento"></h1>
-            <p id="descriptionEvent"></p>
-        </div>
-        <div id="imageContainer"></div>
-        <div id="detailsContainer">
+<header>
+    <div id="logo">
+        <a href="index.html">
+            <img src="images/logo-MNN.jpg" alt="Logotipo de MadNights News - Madrid Independent Events">
+        </a>
+    </div>
+    <nav class="menu-principal">
+        <ul>
+            <li><a href="index.html">Esta semana</a></li>
+            <li><a href="catalog.html#musica-en-vivo">Música en vivo</a></li>
+            <li><a href="catalog.html#dj-sets">DJ sets y clubs</a></li>
+            <li><a href="catalog.html#pop-ups">Pop-ups</a></li>
+            <li><a href="catalog.html#arte">Arte</a></li>
+        </ul>
+    </nav>
+    <div id="btnCreateEventContainer">
+        <a href="gestion.html">
+            <button type="button">Crear evento</button>
+        </a>
+    </div>
+</header>
 
-            // ESTO ES MEJOR QUE SEA TODO LO QUE LE PEDIMOS EN EL FORMULARIO 
-            <h2 class="titleDetails"></h2>
-            <p ></p>
+<main id="detailMainContainer">
+    <!-- Cabecera del Detalle -->
+    <div class="detail-hero-header">
+        <span class="mnn-kicker-meta">01 / EVENT DETAIL</span>
+        <h1 class="tituloEvento">Cargando evento...</h1>
+        <p id="descriptionEvent"></p>
+    </div>
+
+    <!-- Contenedor principal: Imagen(es) a la izquierda y Datos Prácticos a la derecha -->
+    <div class="detail-content-grid">
+        <div id="imageContainer">
+            <!-- Aquí inyectaremos la foto principal y fotos secundarias -->
         </div>
-    </main>
-    <footer>
-        <h1 class="giant-footer-text">SEE YOU OUT THERE.</h1>
-        
-        <div class="footer-bottom-bar">
-            <p class="copyright">&copy; 2026 MadNightsNews.</p>
-            <p class="disclaimer">A concept guide with sample events. Not a verified event calendar.</p>
-            <div id="footerLinks">
-                <a href="#">Privacy</a>
-                <a href="#">Cookies</a>
-                <a href="#">Contact Us</a>
-            </div>
+
+        <div id="detailsContainer">
+            <!-- Aquí inyectaremos los datos del formulario: Categoría, Cuándo, Dónde, Precio -->
         </div>
-    </footer>
+    </div>
+</main>
+
+<footer>
+    <h1 class="giant-footer-text">SEE YOU OUT THERE.</h1>
+    <div class="footer-bottom-bar">
+        <p class="copyright">&copy; 2026 MadNightsNews.</p>
+        <p class="disclaimer">A concept guide with sample events. Not a verified event calendar.</p>
+        <div id="footerLinks">
+            <a href="#">Privacy</a>
+            <a href="#">Cookies</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </div>
+</footer>
+<script src="js/detail.js"></script>
 </body>
 </html>
