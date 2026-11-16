@@ -32,7 +32,8 @@ function renderizarIndex(eventos) {
         spanFecha.textContent = `Actualizado a ${hoy.toLocaleDateString('es-ES', opciones)}`;
     }
 
-    // 2. Renderizar la lista principal de la semana en #eventListContainer
+
+
     const eventListContainer = document.getElementById('eventListContainer');
     if (eventListContainer) {
         eventListContainer.innerHTML = '';
@@ -47,7 +48,6 @@ function renderizarIndex(eventos) {
         }
     }
 
-    // 3. Renderizar bloques por categorías en #DisplayEventsPerCategory (máx 3 por categoría con enlace a catalog.html)
     const displayPerCategory = document.getElementById('DisplayEventsPerCategory');
     if (displayPerCategory) {
         displayPerCategory.innerHTML = '';
@@ -83,7 +83,7 @@ function renderizarIndex(eventos) {
             ulCat.className = 'mnn-uniform-grid';
             ulCat.style.cssText = 'display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; list-style: none; padding: 0 24px; margin: 0;';
 
-            // Máximo 3 eventos por categoría en el Index
+
             eventosCat.slice(0, 3).forEach(evento => {
                 ulCat.appendChild(crearTarjetaIndex(evento, false));
             });
