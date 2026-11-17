@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    inyectarEstilosCatalogo();
     cargarEventosPorCategoria();
 
     window.addEventListener('hashchange', () => {
@@ -52,7 +51,7 @@ function renderizarCategoria(hash, eventos) {
     const mainList = document.getElementById('mainEventsBodyList');
     const weekContainer = document.getElementById('EventsWeekContainer');
 
-    // Ocultamos la sección inferior independiente para unificar todo en un único listado limpio en grid
+    // Ocultamos la sección antigua si existiera en el HTML para evitar duplicidades
     if (weekContainer) weekContainer.style.display = 'none';
 
     mainList.innerHTML = '';
@@ -112,7 +111,7 @@ function renderizarCategoria(hash, eventos) {
                 </div>
             </div>
         </div>
-        <div class="mnn-section-header" style="margin-top: 30px;">
+        <div class="mnn-section-header">
             <div>
                 <span class="mnn-section-kicker">${catInfo.badge} LISTINGS</span>
                 <h2>Todos los eventos de ${catInfo.titulo}</h2>
@@ -126,19 +125,15 @@ function renderizarCategoria(hash, eventos) {
         return;
     }
 
-    // 2. Listado unificado en cuadrícula (2 por fila en PC, 1 por fila en móvil) con el formato exacto de la foto
+    // 2. Listado unificado en cuadrícula con el formato exacto aprobado
     mainList.className = 'mnn-uniform-grid';
 
     eventosCat.forEach((evento, index) => {
-        // Al primer evento de la lista le indicamos que es el próximo para darle relieve en el distintivo neón
         const esElMasProximo = (index === 0);
         mainList.appendChild(crearTarjetaFormatoUnico(evento, esElMasProximo));
     });
 }
 
-/**
- * Crea la tarjeta idéntica al diseño aprobado de la imagen.
- */
 function crearTarjetaFormatoUnico(evento, esElMasProximo) {
     const li = document.createElement('li');
     li.className = 'mnn-featured-card';
@@ -186,221 +181,4 @@ function formatearFechaEditorial(fechaStr) {
     const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 
     return `${dias[fecha.getDay()]} ${partes[2]} ${meses[fecha.getMonth()]} · ${partes[0]}`;
-}
-
-function inyectarEstilosCatalogo() {
-    if (document.getElementById('mnn-catalog-styles')) return;
-    const style = document.createElement('style');
-    style.id = 'mnn-catalog-styles';
-    style.textContent = `
-        #mainEventsContainer {
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 20px 24px;
-        }
-        .mnn-hero-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 24px;
-            padding: 24px 0 32px;
-            border-bottom: 1px solid #222;
-        }
-        .mnn-kicker-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        .mnn-badge-neon {
-            background-color: #ccff00;
-            color: #0a0a0a;
-            font-weight: 800;
-            font-size: 0.7rem;
-            letter-spacing: 0.06em;
-            padding: 3px 8px;
-            border-radius: 3px;
-            text-transform: uppercase;
-            display: inline-block;
-        }
-        .mnn-kicker-meta {
-            color: #888;
-            font-size: 0.75rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-        .mnn-page-title {
-            font-size: clamp(2.2rem, 4vw, 3.4rem);
-            font-weight: 800;
-            color: #ffffff;
-            margin: 0 0 10px 0;
-            line-height: 1.05;
-        }
-        .mnn-page-subtitle {
-            color: #9e9e9e;
-            max-width: 560px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin: 0;
-        }
-        .mnn-stats-grid {
-            display: flex;
-            gap: 12px;
-        }
-        .mnn-stat-box {
-            background: #141414;
-            border: 1px solid #262626;
-            border-radius: 8px;
-            padding: 14px 22px;
-            min-width: 110px;
-        }
-        .mnn-stat-label {
-            display: block;
-            font-size: 0.65rem;
-            color: #777;
-            letter-spacing: 0.08em;
-            margin-bottom: 6px;
-        }
-        .mnn-stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        /* CUADRICULA UNIFORME: 2 columnas en ordenador, 1 en móvil */
-        .mnn-uniform-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            list-style: none;
-            padding: 0;
-            margin: 0 0 40px 0;
-        }
-        @media (max-width: 768px) {
-            .mnn-uniform-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .mnn-featured-card {
-            background: #141414;
-            border: 1px solid #242424;
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .mnn-featured-card:hover {
-            border-color: #ccff00;
-            transform: translateY(-2px);
-        }
-        .mnn-featured-img-wrap {
-            width: 100%;
-            height: 290px;
-            overflow: hidden;
-            background: #1c1c1c;
-        }
-        .mnn-featured-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.35s ease;
-        }
-        .mnn-featured-card:hover .mnn-featured-img-wrap img {
-            transform: scale(1.04);
-        }
-        .mnn-featured-body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-        .mnn-card-top-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .mnn-price-tag {
-            color: #888;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .mnn-card-title {
-            font-size: 1.45rem;
-            font-weight: 700;
-            color: #fff;
-            margin: 0 0 8px 0;
-        }
-        .mnn-card-desc {
-            color: #9e9e9e;
-            font-size: 0.88rem;
-            line-height: 1.45;
-            margin: 0 0 18px 0;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .mnn-card-meta-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: auto;
-            padding-top: 12px;
-            border-top: 1px solid #222;
-        }
-        .mnn-meta-label {
-            display: block;
-            font-size: 0.65rem;
-            color: #666;
-            letter-spacing: 0.08em;
-            margin-bottom: 3px;
-        }
-        .mnn-meta-val {
-            font-size: 0.82rem;
-            color: #d4d4d4;
-        }
-
-        /* Cabecera de sección */
-        .mnn-section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 20px;
-        }
-        .mnn-section-kicker {
-            display: block;
-            font-size: 0.7rem;
-            color: #777;
-            letter-spacing: 0.08em;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-        .mnn-section-header h2 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: #fff;
-            margin: 0;
-        }
-        .mnn-section-count {
-            color: #777;
-            font-size: 0.82rem;
-        }
-        .mnn-empty-state {
-            background: #141414;
-            border: 1px dashed #333;
-            color: #888;
-            padding: 40px;
-            text-align: center;
-            border-radius: 10px;
-            list-style: none;
-            grid-column: 1 / -1;
-        }
-    `;
-    document.head.appendChild(style);
 }

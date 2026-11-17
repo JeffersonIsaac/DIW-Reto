@@ -15,7 +15,7 @@ async function cargarTablaEventos() {
     tbody.innerHTML = '<tr><td colspan="6">Cargando registros...</td></tr>'; // Estado de carga
 
     try {
-        // CORRECCIÓN: Usamos ruta relativa 'api/eventos' para evitar problemas con el nombre del contexto en Tomcat
+
         const response = await fetch('api/eventos');
         
         if (!response.ok) throw new Error('Error al recuperar los datos del servidor.');
@@ -68,7 +68,6 @@ async function cargarTablaEventos() {
             const tdPrecio = document.createElement('td');
             tdPrecio.textContent = Number(evento.precio) === 0 ? 'Gratis' : `${evento.precio} €`;
 
-            // Añadir celdas a la fila
             tr.appendChild(tdId);
             tr.appendChild(tdFoto);
             tr.appendChild(tdInfo);
@@ -109,7 +108,7 @@ async function manejarEnvioFormulario(e) {
     messageDiv.textContent = '';
 
     try {
-        // CORRECCIÓN: Ruta relativa 'api/eventos'
+
         const response = await fetch('api/eventos', {
             method: 'POST',
             headers: {
@@ -131,8 +130,8 @@ async function manejarEnvioFormulario(e) {
             messageDiv.textContent = '¡Evento guardado con éxito!';
             messageDiv.style.color = '#ccff00';
             
-            form.reset(); // Limpieza del formulario tras éxito[cite: 17]
-            cargarTablaEventos(); // Refresco inmediato de la tabla sin recargar[cite: 13, 17]
+            form.reset(); // Limpia el formulario
+            cargarTablaEventos(); // Refresco inmediato de la tabla sin recargar
         } else {
             throw new Error(resultado.error || 'No se pudo procesar el alta.');
         }
@@ -140,7 +139,7 @@ async function manejarEnvioFormulario(e) {
     } catch (error) {
         messageDiv.textContent = `Error: ${error.message}`;
         messageDiv.style.color = '#ff4444';
-        // Los datos introducidos se conservan si falla (requisito del proyecto)[cite: 17]
+        // Los datos introducidos se conservan si falla
     } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Guardar Evento';
