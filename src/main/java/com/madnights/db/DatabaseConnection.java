@@ -5,17 +5,30 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:3307/madnights_db?useSSL=false&serverTimezone=UTC";
-    private static final String USER = "root"; // Cambia por tu usuario de MySQL
-    private static final String PASSWORD = "root"; // Cambia por tu contraseña de MySQL
+
+
+    private static final String DEFAULT_DB = "mariadb";
 
     public static Connection getConnection() throws SQLException {
-        try {
-            // Cargar el driver de MySQL
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("No se encontró el Driver de MySQL", e);
+        String url;
+        String driver;
+        String user = "madnights_app";
+        String password = "123";
+
+        if (DEFAULT_DB.equalsIgnoreCase("mysql")) {
+            driver = "com.mysql.cj.jdbc.Driver";
+            url = "jdbc:mysql://localhost:3307/madnights_db?useSSL=false&serverTimezone=UTC";
+        } else {
+            driver = "org.mariadb.jdbc.Driver";
+            url = "jdbc:mariadb://localhost:3306/madnights_db?useSSL=false&serverTimezone=UTC";
         }
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+
+        try {
+            Class.forName(driver);
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("No se encontró el Driver JDBC para " + DEFAULT_DB, e);
+        }
+
+        return DriverManager.getConnection(url, user, password);
     }
 }
